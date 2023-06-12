@@ -1,9 +1,53 @@
+import { useState } from "react"
 import Button from "../../../ui/button/Button"
 import Input from "../../../ui/input/Input"
 import Select from "../../../ui/select/Select"
 import styles from './Header.module.css'
 
+const categories = [
+    {
+        value: 'all',
+        title: 'All'
+    },
+    {
+        value: 'art',
+        title: 'Art'
+    },
+    {
+        value: 'biography',
+        title: 'Biography'
+    },
+    {
+        value: 'computers',
+        title: 'Computers'
+    },
+    {
+        value: 'history',
+        title: 'History'
+    },
+    {
+        value: 'medical',
+        title: 'Medical'
+    },
+    {
+        value: 'poetry',
+        title: 'Poetry'
+    },
+]
+const sortOptions = [
+    {
+        value: 'relevance',
+        title: 'Relevance'
+    },
+    {
+        value: 'newest',
+        title: 'Newest'
+    }
+]
+
 const Header = () => {
+    const [selectedCategory, setSelectedCategory] = useState(categories[0])
+
     return (
         <header className={styles.header}>
             <h1 className={styles.header__title}>Search for books</h1>
@@ -13,48 +57,16 @@ const Header = () => {
                 </div>
                 <div className={styles.selectsContainer}>
                     <Select 
-                        options={[
-                            {
-                                value: 'all',
-                                content: 'All'
-                            },
-                            {
-                                value: 'art',
-                                content: 'Art'
-                            },
-                            {
-                                value: 'biography',
-                                content: 'Biography'
-                            },
-                            {
-                                value: 'computers',
-                                content: 'Computers'
-                            },
-                            {
-                                value: 'history',
-                                content: 'History'
-                            },
-                            {
-                                value: 'medical',
-                                content: 'Medical'
-                            },
-                            {
-                                value: 'poetry',
-                                content: 'Poetry'
-                            },
-                        ]}
+                        onChange={(value) => {
+                            // executed on change category
+                        }}
+                        options={categories}
                     />
                     <Select 
-                        options={[
-                            {
-                                value: 'relevance',
-                                content: 'Relevance'
-                            },
-                            {
-                                value: 'newest',
-                                content: 'Newest'
-                            }
-                        ]}
+                        onChange={(value) => {
+                            // executed on change sort option
+                        }}
+                        options={sortOptions}
                     />
                 </div>
                 <div>
