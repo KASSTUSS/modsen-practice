@@ -47,13 +47,27 @@ const sortOptions = [
 
 const Header = () => {
     const [selectedCategory, setSelectedCategory] = useState(categories[0])
+    const [searchValue, setSearchValue] = useState('')
+
+    const searchBooks = () => {
+        alert(searchValue)
+        // executed when the search button is clicked
+    }
 
     return (
         <header className={styles.header}>
             <h1 className={styles.header__title}>Search for books</h1>
             <div className={styles.header__form}>
                 <div className={styles.inputContainer}>
-                    <Input />     
+                    <Input
+                        placeholder='Search'
+                        onChange={(value) => {
+                            setSearchValue(value)
+                            // executed on change input value
+                        }}
+                        searchButton
+                        onClickButton={searchBooks}
+                    />     
                 </div>
                 <div className={styles.selectsContainer}>
                     <Select 
@@ -61,16 +75,15 @@ const Header = () => {
                             // executed on change category
                         }}
                         options={categories}
+                        labelText='Categories'
                     />
                     <Select 
                         onChange={(value) => {
                             // executed on change sort option
                         }}
                         options={sortOptions}
+                        labelText='Sorting by'
                     />
-                </div>
-                <div>
-                    <Button>Search</Button>
                 </div>
             </div>
         </header>

@@ -1,14 +1,41 @@
+import { useState, useRef } from 'react'
 import styles from './Input.module.css'
 
-const Input = ({ name, id, placeholder }) => {
+const Input = (props) => {
+    const {
+        placeholder,
+        onChange,
+        searchButton,
+        onClickButton
+    } = props
+
+    const inputRef = useRef(null)
+
     return (
-        <input 
-            className={styles.input} 
-            type="text" 
-            name={name || '1'} 
-            id={id || ''} 
-            placeholder={placeholder || '1'}
-        />
+        <div className={styles.inputContainer}>
+            <input 
+                ref={inputRef}
+                className={styles.input}
+                type="text" 
+                placeholder={placeholder || ''}
+                onChange={() => {
+                    onChange(inputRef.current.value)
+                }}
+                onKeyDown={(e) => {
+                    if (e.keyCode === 13) {
+                        onClickButton()
+                    }
+                }}
+            />
+            {searchButton && (
+                <button 
+                    className={styles.searchButton}
+                    onClick={onClickButton}
+                >
+                    <svg className={styles.searchButton__icon} fill='none' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" height="15" width="15"><path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M5.92 11.34C8.91338 11.34 11.34 8.91338 11.34 5.92C11.34 2.92662 8.91338 0.5 5.92 0.5C2.92662 0.5 0.5 2.92662 0.5 5.92C0.5 8.91338 2.92662 11.34 5.92 11.34Z"></path><path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M13.5 13.5L9.75 9.75"></path></svg>
+                </button>
+            )}
+        </div>
     )
 }
 

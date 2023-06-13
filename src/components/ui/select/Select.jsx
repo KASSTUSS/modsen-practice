@@ -5,7 +5,8 @@ import { CSSTransition } from 'react-transition-group'
 const Select = (props) => {
     const {
         options, 
-        onChange
+        onChange,
+        labelText
     } = props
 
     const [isActive, setIsActive] = useState(false)
@@ -28,12 +29,15 @@ const Select = (props) => {
             onClick={() => setIsActive(!isActive)}
             className={isActive ? styles.select + ' ' + styles.select_active : styles.select}
         >
+            {labelText && (
+                <div className={styles.select__label}>
+                    {labelText + ':'}
+                </div>
+            )}
             <div
                 className={styles.select__selectedOption}
             >
-                {
-                    selectedOption.title
-                }
+                {selectedOption.title}
             </div>
             <span className={styles.arrow}>
                 <span></span><span></span>
