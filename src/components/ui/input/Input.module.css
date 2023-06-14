@@ -70,6 +70,7 @@
 
 .searchButton__icon {
     width: 15px;
-
-    filter: invert(100%);
+}
+.searchButton__icon * {
+    stroke: #ffffff;
 }
