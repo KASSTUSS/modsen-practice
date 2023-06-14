@@ -47,11 +47,11 @@ const sortOptions = [
 
 const Header = () => {
     const [selectedCategory, setSelectedCategory] = useState(categories[0])
+    const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0])
     const [searchValue, setSearchValue] = useState('')
 
-    const searchBooks = () => {
-        alert(searchValue)
-        // executed when the search button is clicked
+    const searchBooks = async () => {
+        
     }
 
     return (
@@ -61,26 +61,19 @@ const Header = () => {
                 <div className={styles.inputContainer}>
                     <Input
                         placeholder='Search'
-                        onChange={(value) => {
-                            setSearchValue(value)
-                            // executed on change input value
-                        }}
+                        onChange={(value) => { setSearchValue(value) }}
                         searchButton
                         onClickButton={searchBooks}
                     />     
                 </div>
                 <div className={styles.selectsContainer}>
                     <Select 
-                        onChange={(value) => {
-                            // executed on change category
-                        }}
+                        onChange={(value) => { setSelectedCategory(value) }}
                         options={categories}
                         labelText='Categories'
                     />
                     <Select 
-                        onChange={(value) => {
-                            // executed on change sort option
-                        }}
+                        onChange={(value) => { setSelectedSortOption(value) }}
                         options={sortOptions}
                         labelText='Sorting by'
                     />
