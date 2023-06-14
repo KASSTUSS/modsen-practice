@@ -8,7 +8,7 @@ const Main = (props) => {
     } = props
 
     return (
-        <main className={styles.main__container}>
+        <main className={styles.main}>
             <Cards data={booksData}/>
         </main>
     )
