@@ -1,6 +1,5 @@
 html,
 body {
-    width: 100vw;
     height: 100vh;
     margin: 0;
 }
@@ -32,7 +31,6 @@ html {
 /* Wrapper properties */
 #root {
     min-height: 100%;
-    overflow: hidden;
 
     background-color: #F0F1FD;
 }

@@ -12,7 +12,7 @@ const Cards = (props) => {
     useEffect(() => {
         if (data) {
             setCardsData(data.map(book => ({
-                bookId: book.id,
+                bookId: book.etag,
                 title: book.volumeInfo.title,
                 category: book.volumeInfo.categories,
                 authors: book.volumeInfo.title,
