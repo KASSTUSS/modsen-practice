@@ -22,7 +22,7 @@ const getUrlRequest = {
 const BookService = {
     async getBooks(searchQuery, category, sorting) {
         const urlRequest = getUrlRequest.searchBooks(searchQuery, category, sorting)
-        console.log(urlRequest)
+        
         const responce = await axios.get(urlRequest)
         
         return responce.data
