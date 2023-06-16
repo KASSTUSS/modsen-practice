@@ -15,17 +15,15 @@ const Loader = ({ isActive, onExited }) => {
             onExited={() => {onExited()}}
         >
             <div>
-            <div class={`${styles.loader} ${styles.book}`}>
-                <figure class={styles.page}></figure>
-                <figure class={styles.page}></figure>
-                <figure class={styles.page}></figure>
-            </div>
+                <div className={`${styles.loader} ${styles.book}`}>
+                    <figure className={styles.page}></figure>
+                    <figure className={styles.page}></figure>
+                    <figure className={styles.page}></figure>
+                </div>
 
-            <h1 class={styles.loader__text}>Loading</h1>
+                <h1 className={styles.loader__text}>Loading</h1>
             </div>
         </CSSTransition>
-
-
     )
 }
 
