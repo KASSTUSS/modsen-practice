@@ -53,19 +53,19 @@ const Select = (props) => {
                 unmountOnExit
             >
                 <div className={`${styles.select__options}`}>
-                        {
-                            options.map(option => (
-                                <div 
-                                    key={optionKey++}
-                                    className={(option === selectedOption) ? styles.select__option + ' ' + styles.select__option_active : styles.select__option }
-                                    value={option.value}
-                                    onClick={() => setSelectedOption(option)}
-                                >
-                                    {option.title}
-                                </div>
-                            ))
-                        }
-                    </div>
+                    {
+                        options.map(option => (
+                            <div 
+                                key={optionKey++}
+                                className={(option === selectedOption) ? styles.select__option + ' ' + styles.select__option_active : styles.select__option }
+                                value={option.value}
+                                onClick={() => setSelectedOption(option)}
+                            >
+                                {option.title}
+                            </div>
+                        ))
+                    }
+                </div>
             </CSSTransition>
         </div>
     )

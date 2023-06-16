@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react"
-import Button from "../../../ui/button/Button"
+import { useState } from "react"
 import Input from "../../../ui/input/Input"
 import Select from "../../../ui/select/Select"
 import styles from './Header.module.css'
@@ -47,25 +46,16 @@ const sortOptions = [
 
 const Header = (props) => {
     const {
-        onSearch
+        onStartSearch
     } = props
 
     const [selectedCategory, setSelectedCategory] = useState(categories[0])
     const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0])
-    const [searchValue, setSearchValue] = useState('')
-    const [foundedBooks, setFoundedBooks] = useState([])
+    const [searchQuery, setSearchQuery] = useState('')
 
-    const searchBooks = async () => {
-        const urlRequest = `https://www.googleapis.com/books/v1/volumes?q="${searchValue}"${(selectedCategory.value != 'all') ? (`+subject:${selectedCategory.value}`) : ''}&maxResults=30&startIndex=0&orderBy=${selectedSortOption.value}&key=AIzaSyDetJf-7ci2jegrC-AREK-WuaZk9acOq1s`
-
-        const data = await fetch(urlRequest).then((response) => response.json());
-
-        setFoundedBooks(data.items)
+    const handleStartSearch = () => {
+        onStartSearch(searchQuery, selectedCategory, selectedSortOption)
     }
-
-    useEffect(() => {
-        onSearch(foundedBooks)
-    }, [foundedBooks])
 
     return (
         <header className={styles.header}>
@@ -74,9 +64,9 @@ const Header = (props) => {
                 <div className={styles.inputContainer}>
                     <Input
                         placeholder='Search'
-                        onChange={(value) => { setSearchValue(value) }}
+                        onChange={(value) => { setSearchQuery(value) }}
                         searchButton
-                        onClickButton={searchBooks}
+                        onClickButton={handleStartSearch}
                     />     
                 </div>
                 <div className={styles.selectsContainer}>
