@@ -4,7 +4,7 @@ import Main from "./main/Main"
 import BookService from "@/services/SearchService"
 
 const Home = () => {
-    const [foundedBooks, setFoundedBooks] = useState([])
+    const [foundedData, setFoundedData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
     const handleStartSearch = async (searchData) => {
@@ -12,17 +12,17 @@ const Home = () => {
 
         const booksData = await BookService.getBooks(searchData.searchQuery, searchData.category, searchData.sorting)
         
-        setFoundedBooks(booksData.items)
+        setFoundedData(booksData)
     }
 
     useEffect(() => {
         setIsLoading(false)
-    }, [foundedBooks])
+    }, [foundedData])
 
     return (
         <div className={StyleSheet.homePage}> 
             <Header onStartSearch={handleStartSearch}/>
-            <Main booksData={foundedBooks} isLoading={isLoading}/>
+            <Main booksData={foundedData} isLoading={isLoading}/>
         </div>
     )
 }
