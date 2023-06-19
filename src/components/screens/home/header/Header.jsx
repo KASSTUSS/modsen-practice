@@ -1,4 +1,5 @@
 import { useState } from "react"
+
 import Input from "../../../ui/input/Input"
 import Select from "../../../ui/select/Select"
 import styles from './Header.module.css'
@@ -44,17 +45,16 @@ const sortOptions = [
     }
 ]
 
-const Header = (props) => {
-    const {
-        onStartSearch
-    } = props
+const Header = ({ onStartSearch }) => {
 
-    const [selectedCategory, setSelectedCategory] = useState(categories[0])
-    const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0])
-    const [searchQuery, setSearchQuery] = useState('')
+    const [searchData, setSearchData] = useState({
+        searchQuery: '',
+        category: categories[0].value,
+        sorting: sortOptions[0].value,
+    })
 
     const handleStartSearch = () => {
-        onStartSearch(searchQuery, selectedCategory, selectedSortOption)
+        onStartSearch(searchData)
     }
 
     return (
@@ -64,19 +64,25 @@ const Header = (props) => {
                 <div className={styles.inputContainer}>
                     <Input
                         placeholder='Search'
-                        onChange={(value) => { setSearchQuery(value) }}
+                        onChange={value => setSearchData(prev => ({
+                            ...prev, searchQuery: value
+                        }))}
                         searchButton
                         onClickButton={handleStartSearch}
                     />     
                 </div>
                 <div className={styles.selectsContainer}>
                     <Select 
-                        onChange={(value) => { setSelectedCategory(value) }}
+                        onChange={value => setSearchData(prev => ({
+                            ...prev, category: value.value
+                        }))}
                         options={categories}
                         labelText='Categories'
                     />
                     <Select 
-                        onChange={(value) => { setSelectedSortOption(value) }}
+                        onChange={value => setSearchData(prev => ({
+                            ...prev, sorting: value.value
+                        }))}
                         options={sortOptions}
                         labelText='Sorting by'
                     />

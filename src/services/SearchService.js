@@ -3,9 +3,11 @@ import axios from "axios";
 const getUrlRequest = {
     startRequest: 'https://www.googleapis.com/books/v1/volumes',
     searchBooks(searchQuery, category, sorting) {
-        const API_KEY = 'AIzaSyDetJf-7ci2jegrC-AREK-WuaZk9acOq1s'
+        const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
         const MAX_RESULTS = 30
         const startIndex = 0
+
+        console.log(API_KEY)
 
         const url = `${this.startRequest}?q="${searchQuery}"${(category != 'all') ? (`+subject:${category}`) : ''}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sorting}&key=${API_KEY}`
         

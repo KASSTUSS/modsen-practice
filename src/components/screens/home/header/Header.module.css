@@ -10,7 +10,7 @@
 
     padding: 5px 0 30px;
 
-    background: linear-gradient(rgba(75,75,75,0.4), rgba(75,75,75,0.6)), url(/img/background.webp);
+    background: linear-gradient(rgba(75,75,75,0.4), rgba(75,75,75,0.6)), url(../../../../assets/img/background.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

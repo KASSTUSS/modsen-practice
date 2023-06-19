@@ -1,153 +1,106 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .loader_entering {
-  animation: enter 0.5s forwards;
+    animation: enter 0.5s forwards;
 }
 .loader_exiting {
-  animation: enter 0.5s reverse;
+    animation: enter 0.5s reverse;
 }
 
 @keyframes enter {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
   
-  .loader__text {
+.loader__text {
+    position: relative;
+    font-size: 18px;
+    font-family: sans-serif;
     color: #be6565;
     text-align: center;
-    font-family: sans-serif;
     text-transform: uppercase;
-    font-size: 18px;
-    position: relative;
-  }
-  
-  .loader__text:after {
-    position: absolute;
-    content: "";
+}
+
+.loader__text:after {
     -webkit-animation: Dots 1s cubic-bezier(0, .39, 1, .68) infinite;
+    content: "";
+    position: absolute;
     animation: Dots 1s cubic-bezier(0, .39, 1, .68) infinite;
-  }
-  
-  .loader {
+}
+
+.loader {
     margin: 5% auto 20px;
     transition: 0.5s;
-  }
-  
-  .book {
-    border: 3px solid #be6565;
+}
+
+.book {
+    perspective: 120px;
+    position: relative;
     width: 50px;
     height: 40px;
-    position: relative;
-    perspective: 120px;
-  }
-  
-  .page {
+    border: 3px solid #be6565;
+}
+
+.page {
+    transform-style: preserve-3d;
+    transform-origin: left center;
     display: block;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    overflow: hidden;
     width: 25px;
     height: 40px;
+    margin: 0;
+    background: #F0F1FD;
     border: 3px solid #be6565;
     border-left: 1px solid #be6565;
-    margin: 0;
-    position: absolute;
-    right: -3px;
-    top: -3px;
-    overflow: hidden;
+}
+
+.book .page:nth-child(1) {
+    animation: pageTurn 1.25s cubic-bezier(0, .4, 1, .7) 1s infinite;
+}
+.book .page:nth-child(2) {
+    animation: pageTurn 1.25s cubic-bezier(0, .4, 1, .7) 0.75s infinite;
+}
+.book .page:nth-child(3) {
+    animation: pageTurn 1.25s cubic-bezier(0, .4, 1, .7) 0.5s infinite;
+}
+
+@keyframes pageTurn {
+0% {
+    transform: rotateY( 0deg);
+}
+20% {
     background: #F0F1FD;
-    transform-style: preserve-3d;
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-  }
-  
-  .book .page:nth-child(1) {
-    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
-    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
-  }
-  
-  .book .page:nth-child(2) {
-    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
-    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
-  }
-  
-  .book .page:nth-child(3) {
-    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
-    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
-  }
-  
-  
-  /* Page turn */
-  
-  @-webkit-keyframes pageTurn {
+}
+40% {
+    transform: rotateY( -180deg);
+    background: #F0F1FD;
+}
+100% {
+    transform: rotateY( -180deg);
+    background: #F0F1FD;
+}
+}
+
+@keyframes Dots {
     0% {
-      -webkit-transform: rotateY( 0deg);
-      transform: rotateY( 0deg);
-    }
-    20% {
-      background: #F0F1FD;
-    }
-    40% {
-      background: #F0F1FD;
-      -webkit-transform: rotateY( -180deg);
-      transform: rotateY( -180deg);
-    }
-    100% {
-      background: #F0F1FD;
-      -webkit-transform: rotateY( -180deg);
-      transform: rotateY( -180deg);
-    }
-  }
-  
-  @keyframes pageTurn {
-    0% {
-      transform: rotateY( 0deg);
-    }
-    20% {
-      background: #F0F1FD;
-    }
-    40% {
-      background: #F0F1FD;
-      transform: rotateY( -180deg);
-    }
-    100% {
-      background: #F0F1FD;
-      transform: rotateY( -180deg);
-    }
-  }
-  
-  
-  /* Dots */
-  
-  @-webkit-keyframes Dots {
-    0% {
-      content: "";
+        content: "";
     }
     33% {
-      content: ".";
+        content: ".";
     }
     66% {
-      content: "..";
+        content: "..";
     }
     100% {
-      content: "...";
+        content: "...";
     }
-  }
-  
-  @keyframes Dots {
-    0% {
-      content: "";
-    }
-    33% {
-      content: ".";
-    }
-    66% {
-      content: "..";
-    }
-    100% {
-      content: "...";
-    }
-  }
+}

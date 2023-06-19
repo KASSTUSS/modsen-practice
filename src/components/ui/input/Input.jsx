@@ -1,30 +1,17 @@
-import { useState, useRef } from 'react'
 import styles from './Input.module.css'
 
-const Input = (props) => {
-    const {
-        placeholder,
-        onChange,
-        searchButton,
-        onClickButton
-    } = props
-
-    const inputRef = useRef(null)
-
+const Input = ({ placeholder, onChange, searchButton, onClickButton }) => {
     return (
         <div className={styles.inputContainer}>
             <input 
-                ref={inputRef}
+                type="text"
                 className={styles.input}
-                type="text" 
                 placeholder={placeholder || ''}
-                onChange={() => {
-                    onChange(inputRef.current.value)
+                onChange={(e) => {
+                    onChange(e.target.value)
                 }}
                 onKeyDown={(e) => {
-                    if (e.keyCode === 13) {
-                        onClickButton()
-                    }
+                    if (e.keyCode === 13) onClickButton()
                 }}
             />
             {searchButton && (

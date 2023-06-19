@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+
+import Loader from '@/components/ui/loader/Loader'
 import Card from "./card/Card"
 import styles from './Cards.module.css'
-import Loader from '../../../../ui/loader/Loader'
 
-const Cards = (props) => {
-    const {
-        data,
-        isLoading
-    } = props
+const Cards = ({ data, isLoading }) => {
 
     const [cardsData, setCardsData] = useState([])
 
@@ -19,7 +16,7 @@ const Cards = (props) => {
                 title: book.volumeInfo.title,
                 category: book.volumeInfo.categories,
                 authors: book.volumeInfo.title,
-                urlImage: book.volumeInfo.imageLinks === undefined ? '' : book.volumeInfo.imageLinks.smallThumbnail,
+                urlImage: !!!book.volumeInfo.imageLinks ? '' : book.volumeInfo.imageLinks.smallThumbnail,
             })))
         }
     }, [data])

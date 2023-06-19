@@ -1,5 +1,6 @@
-import styles from './Loader.module.css'
 import { CSSTransition } from 'react-transition-group'
+
+import styles from './Loader.module.css'
 
 const Loader = ({ isActive, onExited }) => {
     return (
@@ -16,9 +17,7 @@ const Loader = ({ isActive, onExited }) => {
         >
             <div>
                 <div className={`${styles.loader} ${styles.book}`}>
-                    <figure className={styles.page}></figure>
-                    <figure className={styles.page}></figure>
-                    <figure className={styles.page}></figure>
+                    {[0,0,0].map(() => (<figure className={styles.page}></figure>))}
                 </div>
 
                 <h1 className={styles.loader__text}>Loading</h1>
