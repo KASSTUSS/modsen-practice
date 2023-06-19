@@ -1,6 +1,6 @@
 import { CSSTransition } from 'react-transition-group'
 
-import styles from './Loader.module.css'
+import styles from './styles.module.css'
 
 const Loader = ({ isActive, onExited }) => {
     return (

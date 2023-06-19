@@ -1,6 +1,6 @@
-import Cards from "./cards/Cards"
-import Button from '@/components/ui/button/Button'
-import styles from './Main.module.css'
+import Cards from "@components/Cards"
+import Button from '@ui/Button'
+import styles from './styles.module.css'
 
 const Main = ({ booksData, isLoading }) => {
     return (

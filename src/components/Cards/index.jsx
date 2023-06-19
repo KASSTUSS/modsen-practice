@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 
-import Loader from '@/components/ui/loader/Loader'
-import Card from "./card/Card"
-import styles from './Cards.module.css'
+import Loader from '@ui/Loader'
+import Card from "@components/Card"
+import styles from './styles.module.css'
 
 const Cards = ({ data, isLoading }) => {
 

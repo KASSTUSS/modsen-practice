@@ -1,7 +1,7 @@
-import { useEffect,useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 
-import styles from './Select.module.css'
+import styles from './styles.module.css'
 
 const Select = ({ options, onChange, labelText }) => {
 

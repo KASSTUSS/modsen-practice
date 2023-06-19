@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import Header from "./header/Header"
-import Main from "./main/Main"
-import BookService from "@/services/SearchService"
+import Header from "@components/Header"
+import Main from "@components/Main"
+import BookService from "@services/SearchService"
 
 const Home = () => {
     const [foundedData, setFoundedData] = useState([])

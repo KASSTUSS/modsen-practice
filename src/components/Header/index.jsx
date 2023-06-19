@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-import Input from "../../../ui/input/Input"
-import Select from "../../../ui/select/Select"
-import styles from './Header.module.css'
+import Input from "@ui/Input"
+import Select from "@ui/Select"
+import styles from './styles.module.css'
 
 const categories = [
     {

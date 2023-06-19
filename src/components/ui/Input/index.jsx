@@ -1,4 +1,4 @@
-import styles from './Input.module.css'
+import styles from './styles.module.css'
 
 const Input = ({ placeholder, onChange, searchButton, onClickButton }) => {
     return (
