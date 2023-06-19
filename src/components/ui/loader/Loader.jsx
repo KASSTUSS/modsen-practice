@@ -17,7 +17,7 @@ const Loader = ({ isActive, onExited }) => {
         >
             <div>
                 <div className={`${styles.loader} ${styles.book}`}>
-                    {[0,0,0].map(() => (<figure className={styles.page}></figure>))}
+                    {[0,1,2].map((elem) => (<figure key={elem} className={styles.page}></figure>))}
                 </div>
 
                 <h1 className={styles.loader__text}>Loading</h1>
