@@ -5,9 +5,14 @@ import styles from './Main.module.css'
 const Main = ({ booksData, isLoading }) => {
     return (
         <main className={styles.main}>
-            <h1 className={styles.countResults}>{`Found ${booksData.totalItems} results`}</h1>
+            <h1 className={styles.countResults}>
+                {isLoading ? ''
+                 : !!booksData.items ? 
+                `Found ${booksData.totalItems} results` 
+                : 'Start search any books!'}
+            </h1>
             <Cards data={booksData.items} isLoading={isLoading}/>
-            <Button value={'Load more...'}/>
+            {(!!booksData.items && !isLoading) && (<Button value={'Load more...'}/>)}
         </main>
     )
 }
