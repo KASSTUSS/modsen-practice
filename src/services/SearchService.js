@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getUrlRequest = {
     startRequest: 'https://www.googleapis.com/books/v1/volumes',
-    searchBooks(searchQuery, category, sorting, page=0) {
+    searchBooks(searchQuery, category, sorting, page) {
         const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
         const MAX_RESULTS = 30
         const startIndex = MAX_RESULTS * page
@@ -20,8 +20,8 @@ const getUrlRequest = {
 
 
 const BookService = {
-    async getBooks(searchQuery, category, sorting) {
-        const urlRequest = getUrlRequest.searchBooks(searchQuery, category, sorting)
+    async getBooks(searchQuery, category, sorting, page=0) {
+        const urlRequest = getUrlRequest.searchBooks(searchQuery, category, sorting, page)
         
         const responce = await axios.get(urlRequest)
         

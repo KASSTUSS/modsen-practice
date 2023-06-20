@@ -9,6 +9,7 @@ import BookPage from "./pages/BookPage"
 function App() {
   
   const [foundedData, setFoundedData] = useState(null)
+  const [searchData, setSearchData] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
@@ -16,6 +17,7 @@ function App() {
   const handleStartSearch = async (searchData) => {
       navigate('/')
       setIsLoading(true)
+      setSearchData(searchData)
 
       const booksData = await BookService.getBooks(searchData.searchQuery, searchData.category, searchData.sorting)
       
@@ -30,7 +32,7 @@ function App() {
     <>
       <Header onStartSearch={handleStartSearch}/>
       <Routes>
-        <Route path="/" element={<Home foundedData={foundedData} isLoading={isLoading}/>}/>
+        <Route path="/" element={<Home searchData={searchData} foundedData={foundedData} isLoading={isLoading}/>}/>
         <Route path="/card/:id" element={<BookPage />}/>
       </Routes>
     </>
