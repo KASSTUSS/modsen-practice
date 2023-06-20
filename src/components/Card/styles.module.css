@@ -10,10 +10,11 @@
     align-items: center;
 
     font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
 
     border-radius: 20px;
-    background-color: #f8f8ff;
-    box-shadow: 0 0 8px 0.1px #b5b5b5;
+    background-color: #fefeff;
+    box-shadow: 0 0 8px 0.1px #d5d5e9;
 
     transition: 0.15s;
 }
@@ -39,7 +40,7 @@
         cursor: pointer;
         background-color: #fcfcff;
         transform: scale(1.01);
-        box-shadow: 0 0 15px 0.3px #b5b5b5;
+        box-shadow: 0 0 15px 0.3px #c5c5d9;
         transition: 0.15s;
     }
 }
@@ -86,7 +87,9 @@
 
 .card__title {
     margin: 0;
+
     font-size: 20px;
+    color: #252535;
 }
 
 .card__category {

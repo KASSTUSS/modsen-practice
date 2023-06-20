@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom'
+
 import styles from './styles.module.css'
 
 const Card = ({ info }) => {
     return (
-        <div className={styles.card}>
+        <Link to={`/card/${info.bookId}`} className={styles.card}>
             {!info.urlImage ? 
             (<div className={styles.card__noImage}>No images</div>)
             : (<img className={styles.card__image} src={info.urlImage} alt="" />)}
@@ -17,7 +19,7 @@ const Card = ({ info }) => {
                     {info.authors}
                 </p>
             </div>
-        </div>
+        </Link>
     )
 }
 

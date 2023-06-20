@@ -1,7 +1,7 @@
-import { useState } from "react"
-
 import Input from "@ui/Input"
 import Select from "@ui/Select"
+import { useState } from "react"
+
 import styles from './styles.module.css'
 
 const categories = [
