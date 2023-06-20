@@ -7,7 +7,7 @@ const getUrlRequest = {
         const MAX_RESULTS = 30
         const startIndex = MAX_RESULTS * page
 
-        const url = `${this.startRequest}?q="${searchQuery}"${(category != 'all') ? (`+subject:${category}`) : ''}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sorting}&projection=lite&key=${API_KEY}`
+        const url = `${this.startRequest}?q="${searchQuery}"${(category != 'all') ? (`+subject:${category}`) : ''}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sorting}&key=${API_KEY}`
         
         return url
     },
@@ -29,7 +29,6 @@ const BookService = {
     },
     async getBook(id) {
         const urlRequest = getUrlRequest.getBook(id)
-        console.log(urlRequest)
         
         const responce = await axios.get(urlRequest)
         

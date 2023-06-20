@@ -4,30 +4,37 @@
 
     display: flex;
     justify-content: space-between;
+
+    gap: 10px;
     
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .bookPage__image {
-    width: 45%;
-
-    padding: 25px 0;
+    width: 35%;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .bookPage__image img {
     width: 75%;
+    
+    box-shadow: 0 0 15px 0.1px #cfcfd7;
 }
 
 .bookPage__data {
-    width: 55%;
     padding: 25px;
 
+    flex: 1 1 65%;
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    background-color: #fdfdff;
+    box-shadow: 0 0 10px 0.1px #e9e9eb;
+
+    border-radius: 15px 0 0 15px;
 }
 
 .bookPage__title {
@@ -55,9 +62,12 @@
 }
 
 .bookPage__description {
-
     font-size: 16px;
     text-align: justify;
+}
+.bookPage__description h4 {
+    font-size: 18px;
+    margin: 15px 0 10px;
 }
 
 .bookPage__linkContainer {
@@ -99,8 +109,7 @@
     .bookPage__container {
         flex-direction: column;
         align-items: center;
-
-        gap: 10px;
+        gap: 25px
     }
     .bookPage__image {
         width: 100%;
@@ -108,22 +117,19 @@
     }
     .bookPage__image img {
         width: 40%;
-        
-        box-shadow: 0 0 15px 0.1px #cfcfd7;
     }
     .bookPage__data {
         width: 100%;
-        background-color: #fdfdff;
-        box-shadow: 0 0 10px 0.1px #e9e9eb;
 
         border-radius: 15px 15px 0 0;
-    } 
-    .bookPage__description {
-        background-color: #fdfdff;
-
-        border-top: 1px solid #e6e6ec;
     }
-    .bookPage__description h4 {
-        font-size: 18px;
+}
+
+@media screen and (max-width: 400px) {
+    .bookPage__image img {
+        width: 55%;
+    }
+    .bookPage__authors {
+        font-size: 16px;
     }
 }

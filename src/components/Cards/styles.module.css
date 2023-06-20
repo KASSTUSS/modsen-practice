@@ -9,3 +9,12 @@
     gap: 20px;
     flex-wrap: wrap;
 }
+
+.countResults {
+    margin: 0;
+
+    font-size: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #707085;
+}

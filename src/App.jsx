@@ -2,7 +2,7 @@ import Header from "@components/Header"
 import Home from '@pages/Home'
 import BookService from "@services/SearchService"
 import { useEffect,useState } from "react"
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 
 import BookPage from "./pages/BookPage"
 
@@ -11,7 +11,10 @@ function App() {
   const [foundedData, setFoundedData] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  const navigate = useNavigate()
+
   const handleStartSearch = async (searchData) => {
+      navigate('/')
       setIsLoading(true)
 
       const booksData = await BookService.getBooks(searchData.searchQuery, searchData.category, searchData.sorting)
