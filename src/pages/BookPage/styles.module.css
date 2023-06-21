@@ -70,37 +70,39 @@
     margin: 15px 0 10px;
 }
 
-.bookPage__linkContainer {
+.bookPage__goBack__container {
     width: 100%;
     
     padding: 25px;
 }
-.bookPage__link {
+.bookPage__goBack {
     display: flex;
     align-items: center;
     gap: 7px;
     color: #3e3e3e;
 
     font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     
     transition: 0.15s;
     
 }
-.bookPage__link svg {
+.bookPage__goBack svg {
     transform: rotate(-90deg);
 }
-.bookPage__link:hover svg path {
+.bookPage__goBack:hover svg path {
     stroke: #3e3e3e;
     transition: 0.15s;
 }
-.bookPage__link:hover {
+.bookPage__goBack:hover {
+    cursor: pointer;
     transform: translateX(-3px);
     color: #eb8686;
     
     transition: 0.15s;
 }
-.bookPage__link:hover svg path {
+.bookPage__goBack:hover svg path {
     stroke: #eb8686;
     
     transition: 0.15s;

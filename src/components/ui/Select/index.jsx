@@ -22,11 +22,13 @@ const Select = ({ options, onChange, labelText }) => {
     }, [selectedOption])
 
     const selectRef = useRef(null)
-    document.addEventListener('click', (e) => {
-        if (!selectRef.current.contains(e.target) && isActive) {
-            setIsActive(!isActive)
-        }
-    })
+    useEffect(() => {
+        window.addEventListener('click', (e) => {
+            if (!selectRef.current.contains(e.target) && isActive) {
+                setIsActive(!isActive)
+            }
+        })
+    }, [])
 
     let optionKey = 1
 

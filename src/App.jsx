@@ -10,7 +10,7 @@ function App() {
   const [foundedData, setFoundedData] = useState(null)
   const [searchData, setSearchData] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [cardsData, setCardsData] = useState([])
+  const [cardsData, setCardsData] = useState(null)
   const [totalBooksCount, setTotalBooksCount] = useState(0)
   const [page, setPage] = useState(1)
 

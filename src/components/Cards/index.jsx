@@ -16,11 +16,11 @@ const Cards = ({ cardsData, totalBooksCount, isLoading, handleLoadMore }) => {
 
             <div className={styles.cards}>
                 {isLoading ? <Loader isActive={isLoading} />
-                : cardsData.map((card) => <Card key={card.bookEtag} info={card}/>)}
+                : !!cardsData && cardsData.map((card) => <Card key={card.bookEtag} info={card}/>)}
             </div>
 
-            {cardsData && (!isLoading && 
-            <Button onClick={handleLoadMore} value={'Load more...'}/>)}
+            {(!!cardsData && !isLoading) &&
+            <Button onClick={handleLoadMore} value={'Load more...'}/>}
         </>
     )
 }
