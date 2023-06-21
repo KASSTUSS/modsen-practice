@@ -19,8 +19,8 @@ const Cards = ({ cardsData, totalBooksCount, isLoading, handleLoadMore }) => {
                 : cardsData.map((card) => <Card key={card.bookEtag} info={card}/>)}
             </div>
 
-            {cardsData && !isLoading && 
-            <Button onClick={handleLoadMore} value={'Load more...'}/>}
+            {cardsData && (!isLoading && 
+            <Button onClick={handleLoadMore} value={'Load more...'}/>)}
         </>
     )
 }
