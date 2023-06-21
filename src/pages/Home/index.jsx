@@ -1,9 +1,9 @@
 import Main from "@components/Main"
 
-const Home = ({ foundedData, isLoading, searchData }) => {
+const Home = ({ cardsData, isLoading, handleLoadMore, totalBooksCount }) => {
     return (
         <>
-            <Main searchData={searchData} booksData={foundedData} isLoading={isLoading}/>
+            <Main totalBooksCount={totalBooksCount} handleLoadMore={handleLoadMore} cardsData={cardsData} isLoading={isLoading}/>
         </>
     )
 }

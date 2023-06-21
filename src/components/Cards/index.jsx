@@ -1,47 +1,17 @@
 import Card from "@components/Card"
 import CardsStatus from "@components/CardsStatus"
-import BookService from '@services/SearchService'
 import Button from '@ui/Button'
 import Loader from '@ui/Loader'
-import { useEffect,useState } from "react"
 
 import styles from './styles.module.css'
 
-const Cards = ({ booksData, isLoading, searchData }) => {
-
-    const [cardsData, setCardsData] = useState([])
-    const [page, setPage] = useState(1)
-
-    const getBooksList = (data) => {
-         return data.items.map(book => ({
-            bookId: book.id,
-            bookEtag: book.etag,
-            title: book.volumeInfo.title,
-            category: book.volumeInfo.categories,
-            authors: book.volumeInfo.title,
-            urlImage: !book.volumeInfo.imageLinks ? '' : book.volumeInfo.imageLinks.smallThumbnail,
-        }))
-    }
-
-    useEffect(() => {
-        if (booksData) {
-            setCardsData(getBooksList(booksData))
-        }
-    }, [isLoading])
-
-    const handleLoadMore = async () => {
-        const booksData = await BookService.getBooks(searchData.searchQuery, searchData.category, searchData.sorting, page)
-
-        setPage(page + 1)
-
-        setCardsData([...cardsData, ...getBooksList(booksData)])
-    }
+const Cards = ({ cardsData, totalBooksCount, isLoading, handleLoadMore }) => {
 
     return (
         <>
             <CardsStatus 
                 isLoading={isLoading}
-                booksData={booksData}
+                totalBooksCount={totalBooksCount}
             />
 
             <div className={styles.cards}>
@@ -49,7 +19,7 @@ const Cards = ({ booksData, isLoading, searchData }) => {
                 : cardsData.map((card) => <Card key={card.bookEtag} info={card}/>)}
             </div>
 
-            {(booksData && (!!booksData && !isLoading)) && 
+            {cardsData && !isLoading && 
             <Button onClick={handleLoadMore} value={'Load more...'}/>}
         </>
     )

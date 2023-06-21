@@ -2,10 +2,10 @@ import Cards from "@components/Cards"
 
 import styles from './styles.module.css'
 
-const Main = ({ booksData, isLoading, searchData }) => {
+const Main = ({ cardsData, isLoading, handleLoadMore, totalBooksCount }) => {
     return (
         <main className={styles.main}>
-            <Cards searchData={searchData} booksData={booksData} isLoading={isLoading}/>
+        <Cards totalBooksCount={totalBooksCount} handleLoadMore={handleLoadMore} cardsData={cardsData} isLoading={isLoading}/>
         </main>
     )
 }

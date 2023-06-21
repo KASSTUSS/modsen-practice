@@ -1,12 +1,12 @@
 import styles from './styles.module.css'
 
-const CardsStatus = ({ booksData, isLoading }) => {
+const CardsStatus = ({ totalBooksCount, isLoading }) => {
 
     return (
         <h1 className={styles.cards__status}>
             {isLoading ? ''
-            : booksData ? 
-            `Found ${booksData.totalItems} results` 
+            : totalBooksCount ? 
+            `Found ${totalBooksCount} results` 
             : 'Start search any books!'}
         </h1>
     )
