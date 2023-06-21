@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './styles.module.css'
@@ -23,4 +24,4 @@ const Card = ({ info }) => {
     )
 }
 
-export default Card
+export default memo(Card)

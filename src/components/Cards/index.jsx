@@ -1,8 +1,9 @@
 import Card from "@components/Card"
+import CardsStatus from "@components/CardsStatus"
 import BookService from '@services/SearchService'
 import Button from '@ui/Button'
 import Loader from '@ui/Loader'
-import { useEffect, useState } from "react"
+import { useEffect,useState } from "react"
 
 import styles from './styles.module.css'
 
@@ -38,19 +39,18 @@ const Cards = ({ booksData, isLoading, searchData }) => {
 
     return (
         <>
-            <h1 className={styles.countResults}>
-                {booksData && (isLoading ? ''
-                 : booksData ? 
-                `Found ${booksData.totalItems} results` 
-                : 'Start search any books!')}
-            </h1>
+            <CardsStatus 
+                isLoading={isLoading}
+                booksData={booksData}
+            />
 
             <div className={styles.cards}>
                 {isLoading ? <Loader isActive={isLoading} />
                 : cardsData.map((card) => <Card key={card.bookEtag} info={card}/>)}
             </div>
 
-            {(booksData && (!!booksData && !isLoading)) && (<Button onClick={handleLoadMore} value={'Load more...'}/>)}
+            {(booksData && (!!booksData && !isLoading)) && 
+            <Button onClick={handleLoadMore} value={'Load more...'}/>}
         </>
     )
 }
