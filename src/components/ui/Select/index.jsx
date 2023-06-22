@@ -21,13 +21,11 @@ function Select({ options, onChange, labelText }) {
   }, [selectedOption]);
 
   const selectRef = useRef(null);
-  useEffect(() => {
-    document.addEventListener("click", (e) => {
-      if (!selectRef.current.contains(e.target) && isActive) {
-        setIsActive(!isActive);
-      }
-    });
-  }, []);
+  document.addEventListener("click", (e) => {
+    if (!selectRef.current.contains(e.target) && isActive) {
+      setIsActive(!isActive);
+    }
+  });
 
   return (
     <div

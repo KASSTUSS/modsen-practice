@@ -33,11 +33,11 @@ function App() {
 
   const navigate = useNavigate();
 
-  const handleStartSearch = (formData) => {
+  const handleStartSearch = async (formData) => {
     navigate("/");
-    setSearchData(formData);
 
-    fetchSearch(formData);
+    await fetchSearch(formData);
+    setSearchData(formData);
   };
 
   const handleLoadMore = async () => {
