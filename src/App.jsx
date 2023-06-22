@@ -26,7 +26,7 @@ function App() {
 
   const [fetchSearch, isLoading, error] = useFetching(async (searchParams) => {
     const data = await BookService.getBooks(searchParams);
-
+    
     setTotalBooksCount(data.totalItems);
     setCardsData(getBooksList(data.items));
   }, searchData);
@@ -37,7 +37,7 @@ function App() {
     navigate("/");
     setSearchData(formData);
 
-    fetchSearch(searchData);
+    fetchSearch(formData);
   };
 
   const handleLoadMore = async () => {

@@ -7,8 +7,8 @@ function Input({ placeholder, onChange, searchButton, onClickButton }) {
 
   const handlerKeyDown = (e) => {
     if (e.keyCode === 13) {
-      inputRef.current.blur();
       onClickButton();
+      inputRef.current.blur();
     }
   };
 

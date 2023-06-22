@@ -22,7 +22,7 @@ function Select({ options, onChange, labelText }) {
 
   const selectRef = useRef(null);
   useEffect(() => {
-    window.addEventListener("click", (e) => {
+    document.addEventListener("click", (e) => {
       if (!selectRef.current.contains(e.target) && isActive) {
         setIsActive(!isActive);
       }
