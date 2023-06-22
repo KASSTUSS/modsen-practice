@@ -1,137 +1,136 @@
 .bookPage__container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    gap: 10px;
-    
-    font-family: Arial, Helvetica, sans-serif;
+  gap: 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .bookPage__image {
-    width: 35%;
+  width: 35%;
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .bookPage__image img {
-    width: 75%;
-    
-    box-shadow: 0 0 15px 0.1px #cfcfd7;
+  width: 75%;
+
+  box-shadow: 0 0 15px 0.1px #cfcfd7;
 }
 
 .bookPage__data {
-    padding: 25px;
+  padding: 25px;
 
-    flex: 1 1 65%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  flex: 1 1 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
-    background-color: #fdfdff;
-    box-shadow: 0 0 10px 0.1px #e9e9eb;
+  background-color: #fdfdff;
+  box-shadow: 0 0 10px 0.1px #e9e9eb;
 
-    border-radius: 15px 0 0 15px;
+  border-radius: 15px 0 0 15px;
 }
 
 .bookPage__title {
-    margin: 0;
+  margin: 0;
 
-    font-size: 24px;
-    color: #252535;
+  font-size: 24px;
+  color: #252535;
 }
 
 .bookPage__categories {
-    margin: 0;
+  margin: 0;
 
-    font-size: 16px;
-    font-weight: 400;
-    text-decoration: underline;
-    color: #858585;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: #858585;
 }
 
 .bookPage__authors {
-    margin: 0;
+  margin: 0;
 
-    font-size: 18px;
-    font-weight: 400;
-    color: #454545;
+  font-size: 18px;
+  font-weight: 400;
+  color: #454545;
 }
 
 .bookPage__description {
-    font-size: 16px;
-    text-align: justify;
+  font-size: 16px;
+  text-align: justify;
 }
 .bookPage__description h4 {
-    font-size: 18px;
-    margin: 15px 0 10px;
+  font-size: 18px;
+  margin: 15px 0 10px;
 }
 
 .bookPage__goBack__container {
-    width: 100%;
-    
-    padding: 25px;
+  width: 100%;
+
+  padding: 25px;
 }
 .bookPage__goBack {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: #3e3e3e;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #3e3e3e;
 
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    
-    transition: 0.15s;
-    
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+
+  transition: 0.15s;
 }
 .bookPage__goBack svg {
-    transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 .bookPage__goBack:hover svg path {
-    stroke: #3e3e3e;
-    transition: 0.15s;
+  stroke: #3e3e3e;
+  transition: 0.15s;
 }
 .bookPage__goBack:hover {
-    cursor: pointer;
-    transform: translateX(-3px);
-    color: #eb8686;
-    
-    transition: 0.15s;
+  cursor: pointer;
+  transform: translateX(-3px);
+  color: #eb8686;
+
+  transition: 0.15s;
 }
 .bookPage__goBack:hover svg path {
-    stroke: #eb8686;
-    
-    transition: 0.15s;
+  stroke: #eb8686;
+
+  transition: 0.15s;
 }
 @media screen and (max-width: 768px) {
-    .bookPage__container {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px
-    }
-    .bookPage__image {
-        width: 100%;
-        border-radius: 0 0 15px 15px;
-    }
-    .bookPage__image img {
-        width: 40%;
-    }
-    .bookPage__data {
-        width: 100%;
+  .bookPage__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .bookPage__image {
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+  }
+  .bookPage__image img {
+    width: 40%;
+  }
+  .bookPage__data {
+    width: 100%;
 
-        border-radius: 15px 15px 0 0;
-    }
+    border-radius: 15px 15px 0 0;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .bookPage__image img {
-        width: 55%;
-    }
-    .bookPage__authors {
-        font-size: 16px;
-    }
+  .bookPage__image img {
+    width: 55%;
+  }
+  .bookPage__authors {
+    font-size: 16px;
+  }
 }

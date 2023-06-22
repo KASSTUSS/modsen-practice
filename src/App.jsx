@@ -1,64 +1,72 @@
-import Header from "@components/Header"
-import BookPage from '@pages/BookPage'
-import Home from '@pages/Home'
-import BookService from "@services/SearchService"
-import { useEffect,useState } from "react"
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import Header from "@components/Header";
+import useFetching from "@hooks/useFetching";
+import BookPage from "@pages/BookPage";
+import Home from "@pages/Home";
+import BookService from "@services/SearchService";
+import { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
-  
-  const [foundedData, setFoundedData] = useState(null)
-  const [searchData, setSearchData] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [cardsData, setCardsData] = useState(null)
-  const [totalBooksCount, setTotalBooksCount] = useState(0)
-  const [page, setPage] = useState(1)
+  const [searchData, setSearchData] = useState(null);
+  const [cardsData, setCardsData] = useState(null);
+  const [totalBooksCount, setTotalBooksCount] = useState(0);
+  const [page, setPage] = useState(1);
 
-  const getBooksList = (data) => {
-       return data.map(book => ({
-          bookId: book.id,
-          bookEtag: book.etag,
-          title: book.volumeInfo.title,
-          category: book.volumeInfo.categories,
-          authors: book.volumeInfo.title,
-          urlImage: !book.volumeInfo.imageLinks ? '' : book.volumeInfo.imageLinks.smallThumbnail,
-      }))
-  }
+  const getBooksList = (data) =>
+    data.map((book) => ({
+      bookId: book.id,
+      bookEtag: book.etag,
+      title: book.volumeInfo.title,
+      category: book.volumeInfo.categories,
+      authors: book.volumeInfo.title,
+      urlImage: !book.volumeInfo.imageLinks
+        ? ""
+        : book.volumeInfo.imageLinks.smallThumbnail,
+    }));
 
-  const navigate = useNavigate()
+  const [fetchSearch, isLoading, error] = useFetching(async (searchParams) => {
+    const data = await BookService.getBooks(searchParams);
 
-  const handleStartSearch = async (searchData) => {
-      navigate('/')
-      setIsLoading(true)
-      setSearchData(searchData)
+    setTotalBooksCount(data.totalItems);
+    setCardsData(getBooksList(data.items));
+  }, searchData);
 
-      const data = await BookService.getBooks(searchData.searchQuery, searchData.category, searchData.sorting)
+  const navigate = useNavigate();
 
-      setFoundedData(data)
-      setTotalBooksCount(data.totalItems)
-      setCardsData(getBooksList(data.items))
-  }
+  const handleStartSearch = (formData) => {
+    navigate("/");
+    setSearchData(formData);
+
+    fetchSearch(searchData);
+  };
 
   const handleLoadMore = async () => {
-    const data = await BookService.getBooks(searchData.searchQuery, searchData.category, searchData.sorting, page)
+    const data = await BookService.getBooks(searchData, page);
 
-    setPage(prev => prev + 1)
-    setCardsData([...cardsData, ...getBooksList(data.items)])
-}
-
-  useEffect(() => {
-    setIsLoading(false)
-  }, [foundedData])
+    setPage((prev) => prev + 1);
+    setCardsData([...cardsData, ...getBooksList(data.items)]);
+  };
 
   return (
     <>
-      <Header onStartSearch={handleStartSearch}/>
+      <Header onStartSearch={handleStartSearch} />
       <Routes>
-        <Route path="/" element={<Home totalBooksCount={totalBooksCount} handleLoadMore={handleLoadMore} cardsData={cardsData} isLoading={isLoading}/>}/>
-        <Route path="/card/:id" element={<BookPage />}/>
+        <Route
+          path="/"
+          element={
+            <Home
+              totalBooksCount={totalBooksCount}
+              handleLoadMore={handleLoadMore}
+              cardsData={cardsData}
+              isLoading={isLoading}
+              error={error}
+            />
+          }
+        />
+        <Route path="/card/:id" element={<BookPage />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

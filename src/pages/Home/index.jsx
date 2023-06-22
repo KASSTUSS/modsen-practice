@@ -1,11 +1,21 @@
-import Main from "@components/Main"
+import Main from "@components/Main";
 
-const Home = ({ cardsData, isLoading, handleLoadMore, totalBooksCount }) => {
-    return (
-        <>
-            <Main totalBooksCount={totalBooksCount} handleLoadMore={handleLoadMore} cardsData={cardsData} isLoading={isLoading}/>
-        </>
-    )
+function Home({
+  cardsData,
+  isLoading,
+  handleLoadMore,
+  totalBooksCount,
+  error,
+}) {
+  return (
+    <Main
+      totalBooksCount={totalBooksCount}
+      handleLoadMore={handleLoadMore}
+      cardsData={cardsData}
+      isLoading={isLoading}
+      error={error}
+    />
+  );
 }
 
-export default Home
+export default Home;

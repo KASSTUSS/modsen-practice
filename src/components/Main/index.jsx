@@ -1,13 +1,25 @@
-import Cards from "@components/Cards"
+import Cards from "@components/Cards";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
-const Main = ({ cardsData, isLoading, handleLoadMore, totalBooksCount }) => {
-    return (
-        <main className={styles.main}>
-        <Cards totalBooksCount={totalBooksCount} handleLoadMore={handleLoadMore} cardsData={cardsData} isLoading={isLoading}/>
-        </main>
-    )
+function Main({
+  cardsData,
+  isLoading,
+  handleLoadMore,
+  totalBooksCount,
+  error,
+}) {
+  return (
+    <main className={styles.main}>
+      <Cards
+        totalBooksCount={totalBooksCount}
+        handleLoadMore={handleLoadMore}
+        cardsData={cardsData}
+        isLoading={isLoading}
+        error={error}
+      />
+    </main>
+  );
 }
 
-export default Main
+export default Main;
