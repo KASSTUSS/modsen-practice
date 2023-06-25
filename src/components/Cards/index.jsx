@@ -9,6 +9,7 @@ function Cards({
   cardsData,
   totalBooksCount,
   isLoading,
+  isLoadingMore,
   handleLoadMore,
   error,
 }) {
@@ -21,17 +22,17 @@ function Cards({
       />
 
       <div className={styles.cards}>
-        {isLoading ? (
-          <Loader isActive={isLoading} />
-        ) : (
-          !!cardsData &&
-          cardsData.map((card) => <Card key={card.bookEtag} info={card} />)
-        )}
+        {(!!cardsData && !isLoading) &&
+          cardsData.map((card) => <Card key={card.bookEtag} info={card} />)}
       </div>
 
       {!!cardsData &&
         cardsData.length !== parseInt(totalBooksCount, 10) &&
         !isLoading && <Button onClick={handleLoadMore} value="Load more..." />}
+
+      <div style={{ marginTop: "50px" }}>
+        <Loader isActive={isLoading || isLoadingMore} />
+      </div>
     </>
   );
 }

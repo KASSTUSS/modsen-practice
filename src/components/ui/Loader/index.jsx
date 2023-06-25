@@ -14,7 +14,7 @@ function Loader({ isActive, onExited }) {
       mountOnEnter
       unmountOnExit
       onExited={() => {
-        onExited();
+        //onExited();
       }}
     >
       <div>

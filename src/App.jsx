@@ -26,10 +26,17 @@ function App() {
 
   const [fetchSearch, isLoading, error] = useFetching(async (searchParams) => {
     const data = await BookService.getBooks(searchParams);
-    
+
     setTotalBooksCount(data.totalItems);
     setCardsData(getBooksList(data.items));
-  }, searchData);
+  });
+
+  const [fetchLoadMore, isLoadingMore, errorLoadMore] = useFetching(async (searchParams) => {
+    const data = await BookService.getBooks(searchParams, page);
+
+    setPage((prev) => prev + 1);
+    setCardsData([...cardsData, ...getBooksList(data.items)]);
+  });
 
   const navigate = useNavigate();
 
@@ -41,10 +48,7 @@ function App() {
   };
 
   const handleLoadMore = async () => {
-    const data = await BookService.getBooks(searchData, page);
-
-    setPage((prev) => prev + 1);
-    setCardsData([...cardsData, ...getBooksList(data.items)]);
+    await fetchLoadMore(searchData)
   };
 
   return (
@@ -59,6 +63,7 @@ function App() {
               handleLoadMore={handleLoadMore}
               cardsData={cardsData}
               isLoading={isLoading}
+              isLoadingMore={isLoadingMore}
               error={error}
             />
           }

@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 function Main({
   cardsData,
   isLoading,
+  isLoadingMore,
   handleLoadMore,
   totalBooksCount,
   error,
@@ -16,6 +17,7 @@ function Main({
         handleLoadMore={handleLoadMore}
         cardsData={cardsData}
         isLoading={isLoading}
+        isLoadingMore={isLoadingMore}
         error={error}
       />
     </main>

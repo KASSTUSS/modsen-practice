@@ -4,6 +4,7 @@
 
   display: flex;
   justify-content: space-between;
+  padding: 25px 15px;
 
   gap: 10px;
 
@@ -22,6 +23,20 @@
 
   box-shadow: 0 0 15px 0.1px #cfcfd7;
 }
+.bookPage__noImage {
+  height: 200px;
+  width: 55%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #858585;
+  font-style: italic;
+
+  background-color: #e9e9e9;
+  box-shadow: 1px 1px 15px 0.1px #a9a9a9;
+}
 
 .bookPage__data {
   padding: 25px;
@@ -34,7 +49,7 @@
   background-color: #fdfdff;
   box-shadow: 0 0 10px 0.1px #e9e9eb;
 
-  border-radius: 15px 0 0 15px;
+  border-radius: 15px;
 }
 
 .bookPage__title {
@@ -72,6 +87,8 @@
 
 .bookPage__goBack__container {
   width: 100%;
+  
+  display: flex;
 
   padding: 25px;
 }
@@ -114,15 +131,12 @@
   }
   .bookPage__image {
     width: 100%;
-    border-radius: 0 0 15px 15px;
   }
   .bookPage__image img {
     width: 40%;
   }
   .bookPage__data {
     width: 100%;
-
-    border-radius: 15px 15px 0 0;
   }
 }
 

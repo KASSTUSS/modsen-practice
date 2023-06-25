@@ -62,10 +62,16 @@ function BookPage() {
           </div>
           <div className={styles.bookPage__container}>
             <div className={styles.bookPage__image}>
-              <img
-                src={bookData && bookData.volumeInfo.imageLinks.smallThumbnail}
-                alt="book"
-              />
+              {bookData &&
+                (!bookData.volumeInfo.imageLinks ? (
+                  <div className={styles.bookPage__noImage}>No images</div>
+                ) : (
+                  <img
+                    className={styles.card__image}
+                    src={bookData.volumeInfo.imageLinks.smallThumbnail}
+                    alt=""
+                  />
+                ))}
             </div>
             <article className={styles.bookPage__data}>
               <h1 className={styles.bookPage__title}>

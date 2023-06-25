@@ -5,6 +5,7 @@ function Home({
   isLoading,
   handleLoadMore,
   totalBooksCount,
+  isLoadingMore,
   error,
 }) {
   return (
@@ -13,6 +14,7 @@ function Home({
       handleLoadMore={handleLoadMore}
       cardsData={cardsData}
       isLoading={isLoading}
+      isLoadingMore={isLoadingMore}
       error={error}
     />
   );
