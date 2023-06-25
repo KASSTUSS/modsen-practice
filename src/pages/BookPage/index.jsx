@@ -1,3 +1,4 @@
+import useFetching from "@hooks/useFetching";
 import BookService from "@services/SearchService";
 import Loader from "@ui/Loader";
 import { useEffect, useState } from "react";
@@ -6,33 +7,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 
 function BookPage() {
-    
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [bookData, setBookData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [fetchBook, isLoading, error] = useFetching(async (idBook) => {
+    const data = await BookService.getBook(idBook);
+
+    setBookData(data);
+  });
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  const getBookData = async (idBook) => {
-    setIsLoading(true);
-
-    const data = await BookService.getBook(idBook);
-    setBookData(data);
-  };
-
   useEffect(() => {
-    getBookData(id);
+    fetchBook(id);
   }, []);
-
-  useEffect(() => {
-    if (bookData) {
-      setIsLoading(false);
-    }
-  }, [bookData]);
 
   return (
     <div>
@@ -56,14 +47,14 @@ function BookPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M7 13.5V0.5"
-                   />
+                  />
                   <path
                     id="Vector_2"
                     stroke="#3e3e3e"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M10.5 4L7 0.5L3.5 4"
-                   />
+                  />
                 </g>
               </svg>
               Back

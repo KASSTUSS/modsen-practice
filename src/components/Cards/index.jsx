@@ -29,9 +29,9 @@ function Cards({
         )}
       </div>
 
-      {!!cardsData && !isLoading && (
-        <Button onClick={handleLoadMore} value="Load more..." />
-      )}
+      {!!cardsData &&
+        cardsData.length !== parseInt(totalBooksCount, 10) &&
+        !isLoading && <Button onClick={handleLoadMore} value="Load more..." />}
     </>
   );
 }
