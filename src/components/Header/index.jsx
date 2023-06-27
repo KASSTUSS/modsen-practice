@@ -1,55 +1,15 @@
+import Options from "@constants/options";
 import Input from "@ui/Input";
 import Select from "@ui/Select";
 import { useState } from "react";
 
 import styles from "./styles.module.css";
 
-const categories = [
-  {
-    value: "all",
-    title: "All",
-  },
-  {
-    value: "art",
-    title: "Art",
-  },
-  {
-    value: "biography",
-    title: "Biography",
-  },
-  {
-    value: "computers",
-    title: "Computers",
-  },
-  {
-    value: "history",
-    title: "History",
-  },
-  {
-    value: "medical",
-    title: "Medical",
-  },
-  {
-    value: "poetry",
-    title: "Poetry",
-  },
-];
-const sortOptions = [
-  {
-    value: "relevance",
-    title: "Relevance",
-  },
-  {
-    value: "newest",
-    title: "Newest",
-  },
-];
-
 function Header({ onStartSearch }) {
   const [searchData, setSearchData] = useState({
     searchQuery: "",
-    category: categories[0].value,
-    sorting: sortOptions[0].value,
+    category: Options.categories[0].value,
+    sorting: Options.sortOptions[0].value,
   });
 
   const handleStartSearch = () => {
@@ -81,7 +41,7 @@ function Header({ onStartSearch }) {
                 category: value.value,
               }))
             }
-            options={categories}
+            options={Options.categories}
             labelText="Categories"
           />
           <Select
@@ -91,7 +51,7 @@ function Header({ onStartSearch }) {
                 sorting: value.value,
               }))
             }
-            options={sortOptions}
+            options={Options.sortOptions}
             labelText="Sorting by"
           />
         </div>

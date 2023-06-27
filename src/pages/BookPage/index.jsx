@@ -1,5 +1,6 @@
+import BookService from "@api/SearchService";
 import useFetching from "@hooks/useFetching";
-import BookService from "@services/SearchService";
+import Image from "@ui/Image";
 import Loader from "@ui/Loader";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,11 +11,31 @@ function BookPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [bookData, setBookData] = useState(null);
+  const [bookData, setBookData] = useState({
+    image: "",
+    title: "",
+    categories: "",
+    authors: "",
+    description: "",
+  });
   const [fetchBook, isLoading, error] = useFetching(async (idBook) => {
-    const data = await BookService.getBook(idBook);
+    const fetchedBookData = await BookService.getBook(idBook);
 
-    setBookData(data);
+    if (!error) {
+      const bookInfo = fetchedBookData.volumeInfo;
+
+      setBookData({
+        image: bookInfo.imageLinks
+          ? bookInfo.imageLinks.medium ||
+            bookInfo.imageLinks.small ||
+            bookInfo.imageLinks.smallThumbnail
+          : "",
+        title: bookInfo.title ? bookInfo.title : "",
+        categories: bookInfo.categories ? bookInfo.categories.join(", ") : "",
+        authors: bookInfo.authors ? bookInfo.authors.join(", ") : "",
+        description: bookInfo.description ? bookInfo.description : "",
+      });
+    }
   });
 
   const handleGoBack = () => {
@@ -62,34 +83,17 @@ function BookPage() {
           </div>
           <div className={styles.bookPage__container}>
             <div className={styles.bookPage__image}>
-              {bookData &&
-                (!bookData.volumeInfo.imageLinks ? (
-                  <div className={styles.bookPage__noImage}>No images</div>
-                ) : (
-                  <img
-                    className={styles.card__image}
-                    src={bookData.volumeInfo.imageLinks.smallThumbnail}
-                    alt=""
-                  />
-                ))}
+              <Image src={bookData.image} width="100%"/>
             </div>
             <article className={styles.bookPage__data}>
-              <h1 className={styles.bookPage__title}>
-                {bookData && bookData.volumeInfo.title}
-              </h1>
+              <h1 className={styles.bookPage__title}>{bookData.title}</h1>
               <div className={styles.bookPage__categories}>
-                {bookData &&
-                  bookData.volumeInfo.categories &&
-                  bookData.volumeInfo.categories.join(", ")}
+                {bookData.categories}
               </div>
-              <h3 className={styles.bookPage__authors}>
-                {bookData &&
-                  bookData.volumeInfo.authors &&
-                  bookData.volumeInfo.authors.join(", ")}
-              </h3>
+              <h3 className={styles.bookPage__authors}>{bookData.authors}</h3>
               <div className={styles.bookPage__description}>
                 <h4>About books</h4>
-                {bookData && bookData.volumeInfo.description}
+                {bookData.description}
               </div>
             </article>
           </div>

@@ -9,14 +9,17 @@ const getUrlRequest = {
   searchBooks(searchData, page) {
     const MAX_RESULTS = 30;
     const startIndex = MAX_RESULTS * page;
+    const responceFields =
+      "fields=totalItems,items(id,etag,volumeInfo(title,authors,categories,description,imageLinks))";
 
     const { searchQuery, category, sorting } = searchData;
 
-    const url = `${
-      this.startRequestWithoutVPN
-    }/books?q="${searchQuery.trim()}"${
+    const url = `${this.startRequestWithoutVPN}/books?q=intitle:${searchQuery
+      .trim()
+      .split(" ")
+      .join("+intitle:")}${
       category !== "all" ? `+subject:${category}` : ""
-    }&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sorting}&key=${API_KEY}`;
+    }&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sorting}&${responceFields}&key=${API_KEY}`;
 
     return url;
   },

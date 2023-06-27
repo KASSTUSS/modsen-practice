@@ -50,26 +50,6 @@
   transition: 0.15s;
 }
 
-.card__image {
-  height: 200px;
-
-  box-shadow: 1px 1px 15px 0.1px #858585;
-}
-.card__noImage {
-  height: 200px;
-  width: 55%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: #858585;
-  font-style: italic;
-
-  background-color: #e9e9e9;
-  box-shadow: 1px 1px 15px 0.1px #a9a9a9;
-}
-
 .card__info {
   margin-top: 25px;
   width: 80%;

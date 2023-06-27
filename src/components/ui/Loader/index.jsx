@@ -1,4 +1,5 @@
 import { CSSTransition } from "react-transition-group";
+import uuid from "react-uuid";
 
 import styles from "./styles.module.css";
 
@@ -19,8 +20,8 @@ function Loader({ isActive, onExited }) {
     >
       <div>
         <div className={`${styles.loader} ${styles.book}`}>
-          {[0, 1, 2].map((elem) => (
-            <figure key={elem} className={styles.page} />
+          {new Array(3).fill(0).map(() => (
+            <figure key={uuid()} className={styles.page} />
           ))}
         </div>
 

@@ -22,12 +22,15 @@ function Cards({
       />
 
       <div className={styles.cards}>
-        {(!!cardsData && !isLoading) &&
+        {!!cardsData &&
+          !isLoading &&
+          !error &&
           cardsData.map((card) => <Card key={card.bookEtag} info={card} />)}
       </div>
 
-      {!!cardsData &&
-        cardsData.length !== parseInt(totalBooksCount, 10) &&
+      {(!!cardsData &&
+        !error &&
+        cardsData.length !== parseInt(totalBooksCount, 10)) &&
         !isLoading && <Button onClick={handleLoadMore} value="Load more..." />}
 
       <div style={{ marginTop: "50px" }}>

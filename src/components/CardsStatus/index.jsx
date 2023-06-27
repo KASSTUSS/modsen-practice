@@ -1,12 +1,13 @@
 import styles from "./styles.module.css";
 
-function CardsStatus({ totalBooksCount, isLoading }) {
+function CardsStatus({ totalBooksCount, isLoading, error }) {
+  const message = totalBooksCount
+    ? `Found ${totalBooksCount} results`
+    : "Start search any books!";
+
   return (
     <h1 className={styles.cards__status}>
-      {!isLoading &&
-        (totalBooksCount
-          ? `Found ${totalBooksCount} results`
-          : "Start search any books!")}
+      {!isLoading && (!error ? message : "Books not found!")}
     </h1>
   );
 }

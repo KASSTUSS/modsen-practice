@@ -1,8 +1,8 @@
+import BookService from "@api/SearchService";
 import Header from "@components/Header";
 import useFetching from "@hooks/useFetching";
 import BookPage from "@pages/BookPage";
 import Home from "@pages/Home";
-import BookService from "@services/SearchService";
 import { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
@@ -25,18 +25,21 @@ function App() {
     }));
 
   const [fetchSearch, isLoading, error] = useFetching(async (searchParams) => {
-    const data = await BookService.getBooks(searchParams);
+    const fetchingBooksData = await BookService.getBooks(searchParams);
 
-    setTotalBooksCount(data.totalItems);
-    setCardsData(getBooksList(data.items));
+    setPage(1);
+    setTotalBooksCount(fetchingBooksData.totalItems);
+    setCardsData(getBooksList(fetchingBooksData.items));
   });
 
-  const [fetchLoadMore, isLoadingMore, errorLoadMore] = useFetching(async (searchParams) => {
-    const data = await BookService.getBooks(searchParams, page);
-
-    setPage((prev) => prev + 1);
-    setCardsData([...cardsData, ...getBooksList(data.items)]);
-  });
+  const [fetchLoadMore, isLoadingMore, errorLoadMore] = useFetching(
+    async (searchParams) => {
+      const fetchingBooksData = await BookService.getBooks(searchParams, page);
+      
+      setPage((prev) => prev + 1);
+      setCardsData([...cardsData, ...getBooksList(fetchingBooksData.items)]);
+    }
+  );
 
   const navigate = useNavigate();
 
@@ -48,7 +51,7 @@ function App() {
   };
 
   const handleLoadMore = async () => {
-    await fetchLoadMore(searchData)
+    await fetchLoadMore(searchData);
   };
 
   return (
