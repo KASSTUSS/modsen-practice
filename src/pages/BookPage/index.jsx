@@ -50,7 +50,9 @@ function BookPage() {
   return (
     <div className={styles.container}>
       {isLoading ? (
-        <Loader isActive />
+        <div style={{ marginTop: '50px' }}>
+          <Loader isActive={isLoading} />
+        </div>
       ) : (
         <>
           <div className={styles.bookPage__goBack__container}>

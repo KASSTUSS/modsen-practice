@@ -75,13 +75,12 @@ function Cards() {
 
       {!!books &&
         !errorLoadMore &&
+        !isLoadingMore &&
         books.length !== parseInt(totalBooksCount, 10) && (
           <Button onClick={handleLoadMore} value='Load more...' />
         )}
 
-      <div style={{ marginTop: '50px' }}>
-        <Loader isActive={isLoading || isLoadingMore} />
-      </div>
+      <Loader isActive={isLoading || isLoadingMore} />
     </>
   );
 }
