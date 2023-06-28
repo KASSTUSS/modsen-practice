@@ -1,6 +1,6 @@
-import Cards from "@components/Cards";
+import Cards from '@components/Cards';
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 function Main({
   cardsData,

@@ -1,42 +1,42 @@
 const Options = {
   categories: [
     {
-      value: "all",
-      title: "All",
+      value: 'all',
+      title: 'All',
     },
     {
-      value: "art",
-      title: "Art",
+      value: 'art',
+      title: 'Art',
     },
     {
-      value: "biography",
-      title: "Biography",
+      value: 'biography',
+      title: 'Biography',
     },
     {
-      value: "computers",
-      title: "Computers",
+      value: 'computers',
+      title: 'Computers',
     },
     {
-      value: "history",
-      title: "History",
+      value: 'history',
+      title: 'History',
     },
     {
-      value: "medical",
-      title: "Medical",
+      value: 'medical',
+      title: 'Medical',
     },
     {
-      value: "poetry",
-      title: "Poetry",
+      value: 'poetry',
+      title: 'Poetry',
     },
   ],
   sortOptions: [
     {
-      value: "relevance",
-      title: "Relevance",
+      value: 'relevance',
+      title: 'Relevance',
     },
     {
-      value: "newest",
-      title: "Newest",
+      value: 'newest',
+      title: 'Newest',
     },
   ],
 };

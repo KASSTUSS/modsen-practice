@@ -1,7 +1,7 @@
-import { CSSTransition } from "react-transition-group";
-import uuid from "react-uuid";
+import { CSSTransition } from 'react-transition-group';
+import uuid from 'react-uuid';
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 function Loader({ isActive, onExited }) {
   return (
@@ -15,7 +15,7 @@ function Loader({ isActive, onExited }) {
       mountOnEnter
       unmountOnExit
       onExited={() => {
-        //onExited();
+        // onExited();
       }}
     >
       <div>

@@ -23,25 +23,3 @@
   font-size: 34px;
   color: #ffffff;
 }
-
-.header__form {
-  width: 90%;
-  min-width: 280px;
-  max-width: 375px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-.selectsContainer,
-.inputContainer {
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}

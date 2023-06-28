@@ -29,7 +29,7 @@
 
 .loader__text:after {
   -webkit-animation: Dots 1s cubic-bezier(0, 0.39, 1, 0.68) infinite;
-  content: "";
+  content: '';
   position: absolute;
   animation: Dots 1s cubic-bezier(0, 0.39, 1, 0.68) infinite;
 }
@@ -92,15 +92,15 @@
 
 @keyframes Dots {
   0% {
-    content: "";
+    content: '';
   }
   33% {
-    content: ".";
+    content: '.';
   }
   66% {
-    content: "..";
+    content: '..';
   }
   100% {
-    content: "...";
+    content: '...';
   }
 }

@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import { CSSTransition } from "react-transition-group";
-import uuid from "react-uuid";
+import { useEffect, useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import uuid from 'react-uuid';
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 function Select({ options, onChange, labelText }) {
   const [isActive, setIsActive] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  const handleSelectOption = (option) => {
+  const handleSelectOption = option => {
     setSelectedOption(option);
   };
 
@@ -21,7 +21,7 @@ function Select({ options, onChange, labelText }) {
   }, [selectedOption]);
 
   const selectRef = useRef(null);
-  document.addEventListener("click", (e) => {
+  document.addEventListener('click', e => {
     if (!selectRef.current.contains(e.target) && isActive) {
       setIsActive(!isActive);
     }
@@ -59,7 +59,7 @@ function Select({ options, onChange, labelText }) {
         unmountOnExit
       >
         <div className={`${styles.select__options}`}>
-          {options.map((option) => (
+          {options.map(option => (
             <div
               key={uuid()}
               className={
