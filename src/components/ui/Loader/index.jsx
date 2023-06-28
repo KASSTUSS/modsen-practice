@@ -3,7 +3,7 @@ import uuid from 'react-uuid';
 
 import styles from './styles.module.css';
 
-function Loader({ isActive, onExited }) {
+function Loader({ isActive }) {
   return (
     <CSSTransition
       in={isActive}
@@ -14,9 +14,6 @@ function Loader({ isActive, onExited }) {
       }}
       mountOnEnter
       unmountOnExit
-      onExited={() => {
-        // onExited();
-      }}
     >
       <div>
         <div className={`${styles.loader} ${styles.book}`}>

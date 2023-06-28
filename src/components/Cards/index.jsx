@@ -73,9 +73,11 @@ function Cards() {
         {!!books && books.map(card => <Card key={card.bookEtag} info={card} />)}
       </div>
 
-      {!!books && books.length !== parseInt(totalBooksCount, 10) && (
-        <Button onClick={handleLoadMore} value='Load more...' />
-      )}
+      {!!books &&
+        !errorLoadMore &&
+        books.length !== parseInt(totalBooksCount, 10) && (
+          <Button onClick={handleLoadMore} value='Load more...' />
+        )}
 
       <div style={{ marginTop: '50px' }}>
         <Loader isActive={isLoading || isLoadingMore} />

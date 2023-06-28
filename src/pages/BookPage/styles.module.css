@@ -1,3 +1,13 @@
+.container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .bookPage__container {
   width: 100%;
   height: 100%;
@@ -104,11 +114,8 @@
 
   transition: 0.15s;
 }
-.bookPage__goBack svg {
-  transform: rotate(-90deg);
-}
-.bookPage__goBack:hover svg path {
-  stroke: #3e3e3e;
+.bookPage__goBack:hover .bookPage__goBack_icon {
+  color: #eb8686;
   transition: 0.15s;
 }
 .bookPage__goBack:hover {
@@ -118,8 +125,8 @@
 
   transition: 0.15s;
 }
-.bookPage__goBack:hover svg path {
-  stroke: #eb8686;
+.bookPage__goBack_icon {
+  color: #3e3e3e;
 
   transition: 0.15s;
 }

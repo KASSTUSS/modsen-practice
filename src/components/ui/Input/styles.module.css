@@ -67,10 +67,3 @@
 
   transition: 0.15s;
 }
-
-.searchButton__icon {
-  width: 15px;
-}
-.searchButton__icon * {
-  stroke: #ffffff;
-}

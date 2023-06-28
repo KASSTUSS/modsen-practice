@@ -3,6 +3,7 @@ import useFetching from '@hooks/useFetching';
 import Image from '@ui/Image';
 import Loader from '@ui/Loader';
 import { useEffect, useState } from 'react';
+import { BsBoxArrowLeft } from 'react-icons/bs';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './styles.module.css';
@@ -47,37 +48,17 @@ function BookPage() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       {isLoading ? (
         <Loader isActive />
       ) : (
         <>
           <div className={styles.bookPage__goBack__container}>
             <div className={styles.bookPage__goBack} onClick={handleGoBack}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 14 14'
-                height='15'
-                width='15'
-              >
-                <g id='arrow-up-1--arrow-up-keyboard'>
-                  <path
-                    id='Vector'
-                    stroke='#3e3e3e'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M7 13.5V0.5'
-                  />
-                  <path
-                    id='Vector_2'
-                    stroke='#3e3e3e'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M10.5 4L7 0.5L3.5 4'
-                  />
-                </g>
-              </svg>
+              <BsBoxArrowLeft
+                size='20px'
+                className={styles.bookPage__goBack_icon}
+              />
               Back
             </div>
           </div>
