@@ -1,15 +1,22 @@
 import Options from '@constants/options';
 import Input from '@ui/Input';
 import Select from '@ui/Select';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { booksActions, dispatchBooks } from '@/contexts/BooksContext';
+import {
+  booksActions,
+  BooksContext,
+  dispatchBooks,
+} from '@/contexts/BooksContext';
 
 import styles from './styles.module.css';
 
 function SearchForm() {
-  const [searchParams, setSearchParams] = useState({
+
+  const { searchParams } = useContext(BooksContext);
+
+  const [searchData, setSearchData] = useState({
     searchQuery: '',
     category: Options.categories[0].value,
     sorting: Options.sortOptions[0].value,
@@ -19,12 +26,14 @@ function SearchForm() {
 
   const handleStartSearch = async () => {
     navigate('/');
-
-    dispatchBooks(
-      booksActions.setSearchParamsContext({
-        searchParams,
-      }),
-    );
+    
+    if ( searchParams !== searchData ) {
+      dispatchBooks(
+        booksActions.setSearchParamsContext({
+          searchParams: searchData,
+        }),
+      );
+    }
   };
 
   return (
@@ -33,7 +42,7 @@ function SearchForm() {
         <Input
           placeholder='Search'
           onChange={value =>
-            setSearchParams(prev => ({
+            setSearchData(prev => ({
               ...prev,
               searchQuery: value,
             }))
@@ -45,7 +54,7 @@ function SearchForm() {
       <div className={styles.selectsContainer}>
         <Select
           onChange={value =>
-            setSearchParams(prev => ({
+            setSearchData(prev => ({
               ...prev,
               category: value.value,
             }))
@@ -55,7 +64,7 @@ function SearchForm() {
         />
         <Select
           onChange={value =>
-            setSearchParams(prev => ({
+            setSearchData(prev => ({
               ...prev,
               sorting: value.value,
             }))
