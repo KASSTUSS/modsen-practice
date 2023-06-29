@@ -1,0 +1,87 @@
+.card {
+  min-width: 275px;
+  max-width: 350px;
+  width: 20%;
+  height: 385px;
+
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+
+  border-radius: 20px;
+  background-color: #fefeff;
+  box-shadow: 0 0 8px 0.1px #d5d5e9;
+
+  transition: 0.15s;
+}
+
+@media screen and (max-width: 1288px) {
+  .card {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 960px) {
+  .card {
+    width: 38%;
+  }
+}
+@media screen and (max-width: 633px) {
+  .card {
+    width: 85%;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    cursor: pointer;
+    background-color: #fcfcff;
+    transform: scale(1.01);
+    box-shadow: 0 0 15px 0.3px #c5c5d9;
+    transition: 0.15s;
+  }
+}
+
+.card:active {
+  transform: scale(0.99);
+  transition: 0.15s;
+}
+
+.card__info {
+  margin-top: 25px;
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.card__info::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card__title {
+  margin: 0;
+
+  font-size: 20px;
+  color: #252535;
+}
+
+.card__category {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: #858585;
+}
+.card__authors {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  color: #454545;
+}
