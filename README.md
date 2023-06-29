@@ -9,18 +9,23 @@
 ## Available Scripts
 
 - ### Run project dev mode
+
   `yarn dev`
 
 - ### Build project
+
   `yarn build`
 
 - ### Check all code with ESLint
+
   `yarn lint`
 
 - ### Autocorrect by all code with ESLint
+
   `yarn lint:fix`
 
 - ### Format all code with Pritier
+
   `yarn format`
 
 - ### Check all code formating with Pritier

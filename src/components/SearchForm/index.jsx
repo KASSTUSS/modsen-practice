@@ -13,7 +13,6 @@ import {
 import styles from './styles.module.css';
 
 function SearchForm() {
-
   const { searchParams } = useContext(BooksContext);
 
   const [searchData, setSearchData] = useState({
@@ -26,8 +25,8 @@ function SearchForm() {
 
   const handleStartSearch = async () => {
     navigate('/');
-    
-    if ( searchParams !== searchData ) {
+
+    if (searchParams !== searchData) {
       dispatchBooks(
         booksActions.setSearchParamsContext({
           searchParams: searchData,
