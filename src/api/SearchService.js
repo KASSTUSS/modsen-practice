@@ -4,7 +4,7 @@ const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const getUrlRequest = {
   startRequestWithoutVPN:
-    'https://https://practice-back-bbkr.onrender.com',
+    'https://practice-back-bbkr.onrender.com',
   searchBooks(searchData, indexBooks) {
     const MAX_RESULTS = 30;
     const responceFields =
