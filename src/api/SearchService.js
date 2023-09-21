@@ -22,7 +22,7 @@ const getUrlRequest = {
     return url;
   },
   getBook(bookId) {
-    const url = `https://www.googleapis.com/books/v1/volumes/${bookId}`;
+    const url = `${this.startRequestWithoutVPN}/book?${bookId}`;
 
     return url;
   },
